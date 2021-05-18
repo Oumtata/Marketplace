@@ -1,0 +1,28 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'products/menubar.css' %}">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Homepage</title>
+
+  <ul class="header"> 
+    <div>
+      <li class="menu"><a href="{% url 'signup' %}">Sign up</a> </li>
+      <li class="menu"><a href="{% url 'acc_login' %}">Log in</a> </li>
+      <li class="menu"><a href="{% url 'index' %}">Chat</a> </li>
+    </div>
+  </ul>
+</head>
+
+<h1>All products for sale</h1>
+{% for p in all_products %}
+<p>
+  <img src="{{p.image.url}}" alt="image_product"/><br/> 
+  <i>User: {{p.owner.username}} </i><br/>
+  <strong>{{p.name}}</strong> <br/>
+  Price: ${{p.price}} <br/>
+  Inventory count: {{p.inventory_count}}<br/>
+  Description: {{p.description}}
+</p>
+{% endfor %}

@@ -1,0 +1,85 @@
+img {
+    width: 200px;
+    height: 200px;
+    padding: 30px;
+  }
+  
+  h1 {
+    padding: 35px;
+    text-align: center;
+    font-family: Calibri, Arial Narrow, sans-serif;
+  }
+  
+  p {
+    display: inline-block;
+    align-items: center;
+    text-align: center;
+    font-family: Calibri, Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  div {
+    text-align: right;
+    font-family: Calibri, Arial, sans-serif;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 2px;
+    overflow: hidden;
+    background-color: #3f86b5;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+  }
+  
+  li {
+    display: block;
+    color: #01416b;
+    float: right;
+    padding: 5px 5px;
+  }
+  
+  .menu {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 5px 5px;
+  }
+  
+  li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #1c6a9e;
+  }
+  
+  .body {
+    display: inline-block;
+    align-items: center;
+    text-align: center;
+    font-family: Calibri, Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  head, .header {
+    text-align: right;
+    font-family: Calibri, Arial, sans-serif;
+    padding-right: 15px;
+    padding-left: 15px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #3f86b5;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+  }
+  
+  a {
+    text-decoration: none;
+  }

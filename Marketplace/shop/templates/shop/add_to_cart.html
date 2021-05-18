@@ -1,0 +1,119 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'shop/menubar.css' %}">
+
+<style>
+  div {
+    padding: 10px;
+    text-align: center;
+    font-family: Calibri, Arial Narrow, sans-serif;
+  }
+
+  input {
+    width: 30%;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+
+  .btns {
+    background-color: color;
+    color: black;
+    display: inline;
+    justify-content: right;
+    align-items: right;
+    text-align: center;
+    font-family: Calibri, Arial, sans-serif;
+    padding: 4px;
+    border: 1px solid lightgrey;
+    border-style: groove;
+    border-radius: 6px;
+  }
+
+  .btns:hover {
+    color: white;
+    background-color: #ded36f;
+  }
+
+  .button {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+  }
+
+  input[type=submit]:hover {
+    color: white;
+    background-color: rgba(197, 204, 211, 0.842);
+  }
+</style>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Add to cart</title>
+
+  <ul class="header"> 
+    <li class="menu"><a href="{% url 'do_logout' %}">Logout</a></li>
+    <li class="menu"><a href="{% url 'myacc' %}">My Account</a></li>
+    <li class="menu"><a href="{% url 'index' %}">Chat</a> </li>
+    <li class="menu" style="background-color: #c9c749;"><a href="{% url 'show_cart' %}">Shop</a></li>
+    <li class="menu" style="float:left"><a href="{% url 'add_product' %}">Home</a></li>
+  </ul>
+</head>
+
+
+<h1>Add Items to Your Cart</h1>
+
+{% for p in other_items %}
+<p>
+  <img src="{{p.image.url}}" alt="image_product" /><br />
+  Product id: {{p.id}} <br/>
+  User: {{p.owner.username}} <br/>
+  Item: {{p.name}} <br/>
+  Max amount: {{p.inventory_count}}
+</p>
+{% endfor %}
+
+<div>
+<h2>Your shopping cart</h2>
+{% if mess %}
+  <b><p>{{mess}} </p></b> <br/>
+{% endif %}
+
+{% if orderItem %}
+  <i><p>Adding: {{orderItem.name}} </p></i>
+{% endif %}
+{% if cart %}
+<div>
+  <!-- <p>Cart from user: {{cart.user.username}}</p><br/> -->
+  {% for i in all_items %}
+  <p>
+    Item: {{i.item.name}} <br/>
+    Quantity: {{i.quantity}}
+  </p>
+  {% endfor %}
+</div>
+{% endif %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <div>
+      ID of the product you want to add to your cart: <br/><br/>
+      <input type="text" name="id" value="" />
+    </div>
+    <div>
+      Quantity: <br/><br/>
+      <input type="number" min="1" name="quantity" /> <br/><br/>
+    </div>
+    <input type="submit" />
+</form>
+</div>
+
+<footer class="button">
+  <div class="btns">
+    <p class="add"><a href="{% url 'cart' %}">Show Cart</a></p>
+  </div>
+</footer>
+

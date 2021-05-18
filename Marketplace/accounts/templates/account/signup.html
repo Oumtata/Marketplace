@@ -1,0 +1,160 @@
+<!-- {% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'products/menubar.css' %}"> -->
+
+<style>
+  body {
+    background-color: #c2e3f2;
+  }
+  .center{
+    background-color: white;
+    position: fixed;
+    top: 26%;
+    left: 46%;
+    margin-top: -50px;
+    margin-left: -100px;
+    border: 1px solid lightgrey;
+    border-style: groove;
+    border-radius: 10px;
+  }
+  
+
+  h1, .submit {
+    padding: 0px;
+    text-align: center;
+    font-family: Calibri, Arial Narrow, sans-serif;
+  }
+
+  p { 
+    padding: 8px;
+    text-align: left;
+    font-family: Calibri, Arial Narrow, sans-serif;
+  }
+
+  input[type=text]{
+    width: 69%;
+    padding: 5px;
+    margin: 10px;
+    display: inline-block;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    box-sizing: border-box;   
+  }
+
+  input[name=password]{
+    width: 57%;
+    padding: 5px;
+    margin: 10px;
+    display: inline-block;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    box-sizing: border-box;   
+  }
+
+  input[name=password_confirm]{
+    width: 54%;
+    padding: 5px;
+    margin: 10px;
+    display: inline-block;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    box-sizing: border-box;   
+  }
+  
+  
+  input[type=submit] {
+    width: 30%;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+
+  input[type=submit]:hover {
+    color: white;
+    background-color: rgba(197, 204, 211, 0.842);
+  }
+
+  .menu {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 5px 5px;
+    text-align: center;
+}
+
+  li a {
+      color: white;
+      text-decoration: none;
+  }
+
+  li a:hover {
+      background-color: #1c6a9e;
+  }
+
+  .header {
+    color: white;
+    text-align: right;
+    font-family: Calibri, Arial, sans-serif;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 2px;
+      overflow: hidden;
+      background-color: #3f86b5;
+      position: sticky;
+      position: -webkit-sticky;
+      top: 0;
+  }
+
+  li {
+      display: block;
+      color: #01416b;
+      float: right;
+      padding: 5px 5px;
+  }
+</style>
+
+<head>
+  <ul class="header"> 
+    <div>
+      <li class="menu"><a href="{% url 'signup' %}">Sign up</a> </li>
+      <li class="menu"><a href="{% url 'acc_login' %}">Log in</a> </li>
+      <li class="menu"><a href="{% url 'index' %}">Chat</a> </li>
+      <li class="menu" style="float:left"><a href="{% url 'pre_login_home' %}">Home</a></li>
+    </div>
+  </ul>
+
+  <meta charset="utf-8" />
+  <title>Sign Up</title>
+</head>
+
+<body>
+  <div class="center">
+  <h1>Create User</h1>
+  <form action="" method="post">
+      {% csrf_token %}
+      <p>
+        Username: <input type="text" name="username" value="{{form.data.username}}" />
+        {{ form.username.errors }}
+      </p>
+      <p>
+        Create Password: <input type="password" name="password" />
+        {{ form.password.errors }}
+      </p>
+      <p>
+        Confirm Password: <input type="password" name="password_confirm" />
+        {{ form.password_confirm.errors }}
+      </p>
+      <p class="submit">
+        <input type="submit" value="Create" />
+      </p>
+  </form>
+  </div>
+</body>

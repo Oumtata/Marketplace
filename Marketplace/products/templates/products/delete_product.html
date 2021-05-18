@@ -1,0 +1,89 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'products/menubar.css' %}">
+
+<style>
+  div {
+    padding: 5px;
+    text-align: center;
+    font-family: Calibri, Arial Narrow, sans-serif;
+  }
+
+  .menu {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 5px 5px;
+  }
+
+  .menulink {
+    color: white;
+    text-decoration: none;
+  }
+
+  input, textarea {
+    width: 30%;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+
+  
+  input[name=id]{
+    width: 5%;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit]:hover {
+    color: white;
+    background-color: rgba(197, 204, 211, 0.842);
+  }
+</style>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Delete Product</title>
+
+  <ul class="header"> 
+    <li class="menu"><a href="{% url 'do_logout' %}">Logout</a></li>
+    <li class="menu"><a href="{% url 'myacc' %}">My Account</a></li>
+    <li class="menu" style="background-color: #c9c749;"><a href="{% url 'my_products' %}">My Products</a></li>
+    <li class="menu"><a href="{% url 'index' %}">Chat</a> </li>
+    <li class="menu"><a href="{% url 'show_cart' %}">Shop</a></li>
+    <li class="menu" style="float:left"><a href="{% url 'homepage' %}">Home</a></li>
+  </ul>
+</head>
+
+<h1>Delete Products</h1>
+{% for p in user_prod %}
+<p class="body">
+  <img src="{{p.image.url}}" alt="image_product"/><br /> 
+  Product id: {{p.id}} <br />
+  User: {{p.owner.username}} <br />
+  <strong>{{p.name}}</strong> <br/>
+  Price: {{p.price}} <br/>
+  Inventory count: {{p.inventory_count}}<br />
+  Description: {{p.description}}
+</p>
+{% endfor %}
+
+<div class="delete">
+<p><b>{{mess}}</b></p>
+<form action="" method="post">
+    {% csrf_token %}
+    <div>
+        ID of the product you want to remove: <input type="text" name="id" value="" />
+    </div>
+    <input type="submit" />
+</form>
+</div>
+
+

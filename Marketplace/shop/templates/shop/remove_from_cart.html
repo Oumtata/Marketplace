@@ -1,0 +1,103 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'shop/menubar.css' %}">
+
+<style>
+  div {
+    padding: 10px;
+    text-align: center;
+    font-family: Calibri, Arial Narrow, sans-serif;
+  }
+
+  input {
+    width: 30%;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+
+  input[type=submit]:hover {
+    color: white;
+    background-color: rgba(197, 204, 211, 0.842);
+  }
+
+  .btns {
+    background-color: color;
+    color: black;
+    display: inline;
+    justify-content: right;
+    align-items: right;
+    text-align: center;
+    font-family: Calibri, Arial, sans-serif;
+    padding: 4px;
+    border: 1px solid lightgrey;
+    border-style: groove;
+    border-radius: 6px;
+  }
+
+  .btns:hover {
+    color: white;
+    background-color: #ded36f;
+  }
+
+  .button {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+  }
+
+  input[name=order_ID]{
+    width: 5%;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+</style>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Remove from cart</title>
+
+  <ul class="header"> 
+    <li class="menu"><a href="{% url 'do_logout' %}">Logout</a></li>
+    <li class="menu"><a href="{% url 'myacc' %}">My Account</a></li>
+    <li class="menu"><a href="{% url 'index' %}">Chat</a> </li>
+    <li class="menu" style="background-color: #c9c749;"><a href="{% url 'show_cart' %}">Shop</a></li>
+    <li class="menu" style="float:left"><a href="{% url 'homepage' %}">Home</a></li>
+  </ul>
+</head>
+
+
+<h1>Remove Item From Shopping Cart</h1>
+<div>
+<strong>Cart:</strong> <br />
+{% for i in all_items_in_cart %}
+<p>
+  Item ID: {{i.id}} <br/>
+  Item name: {{i.item.name}} <br/>
+</p>
+{% endfor %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <div>
+      ID of the Item to be Removed <br/>
+      <input type="text" name="order_ID" value="" />
+    </div>
+    <input type="submit" />
+</form>
+
+<b><p>{{mess}}</p></b>
+</div>
+
+<footer class="button">
+  <div class="btns">
+    <p class="add"><a href="{% url 'cart' %}">Show Cart</a></p>
+  </div>
+</footer>

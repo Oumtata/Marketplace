@@ -1,0 +1,30 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'products/menubar.css' %}">
+
+
+<head>
+  <meta charset="utf-8" />
+  <title>Homepage</title>
+
+  <ul class="header"> 
+    <li class="menu"><a href="{% url 'do_logout' %}">Logout</a></li>
+    <li class="menu"><a href="{% url 'myacc' %}">My Account</a></li>
+    <li class="menu"><a href="{% url 'index' %}">Chat</a> </li>   
+    <li class="menu"><a href="{% url 'show_cart' %}">Shop</a></li>
+    <li class="menu" style="background-color: #c9c749;">Welcome {{request.user.username}}! </li>
+  </ul>
+</head>
+
+<h1>All products for sale</h1>
+{% for p in all_products %}
+<p class="body">
+  <img src="{{p.image.url}}" alt="image_product"/><br /> 
+  User: {{p.owner.username}} <br />
+  <strong>{{p.name}}</strong> <br/>
+  Price: {{p.price}} <br/>
+  Inventory count: {{p.inventory_count}}<br />
+  Description: {{p.description}}
+</p>
+{% endfor %}
+

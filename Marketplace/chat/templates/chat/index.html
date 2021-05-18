@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'shop/menubar.css' %}">
+
+<style>
+  body {
+    background-color: #faf9d2;
+  }
+
+  .align {
+    /* background-color: white; */
+    text-align: center;
+    position: fixed;
+    top: 30%;
+    left: 30%;
+    margin-top: -50px;
+    margin-left: -100px;
+    /* border: 1px solid lightgrey;
+    border-style: groove;
+    border-radius: 10px; */
+  }
+
+  input[type=text]{
+    width: 20%;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    box-sizing: border-box;   
+  }
+
+  input[type=button] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+
+  input[type=button]:hover {
+    color: white;
+    background-color: rgba(197, 204, 211, 0.842);
+  }
+</style>
+
+<head>
+  <ul class="header">
+    <li class="menu"><a href="{% url 'do_logout' %}">Logout</a></li>
+    <li class="menu"><a href="{% url 'myacc' %}">My Account</a></li>
+    <li class="menu" style="background-color: #c9c749;"><a href="{% url 'index' %}">Chat</a> </li>
+    <li class="menu"><a href="{% url 'show_cart' %}">Shop</a></li>
+    <li class="menu" style="float:left"><a href="{% url 'pre_login_home' %}">Home</a></li>
+  </ul>
+
+  <meta charset="utf-8" />
+  <title>Chat Rooms</title>
+</head>
+
+<body>
+  <div class="align">
+    <h1 style="font-size: 25px;">Which chat room would you like to enter?</h1>
+    <p><input id="room-name-input" type="text" size="100" /></p><br/>
+    <p><input id="room-name-submit" type="button" value="Enter"/></p>
+
+    <script>
+      document.getElementById('room-name-input').focus();
+      document.getElementById('room-name-input').onkeyup = function (e) {
+        if (e.keyCode === 13) {  // enter, return
+          document.getElementById('room-name-submit').click();
+        }
+      };
+
+      document.getElementById('room-name-submit').onclick = function (e) {
+        var roomName = document.getElementById('room-name-input').value;
+        window.location.pathname = '/chat/' + roomName + '/';
+      };
+    </script>
+  </div>
+</body>
+</html>

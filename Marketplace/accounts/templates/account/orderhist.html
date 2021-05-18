@@ -1,0 +1,49 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'accounts/menubar.css' %}">
+
+<style>
+    h1,p {
+      padding: 35px;
+      text-align: center;
+      font-family: Calibri, Arial Narrow, sans-serif;
+    }
+
+  .items {
+    text-align: center;
+    font-family: Calibri, Arial, sans-serif;
+    padding: 5px;
+  }
+</style>
+
+<head>
+  <ul class="header"> 
+    <li class="menu"><a href="{% url 'do_logout' %}">Logout</a></li>
+    <li class="menu" style="background-color: #c9c749;"><a href="{% url 'myacc' %}">My Account</a></li>
+    <li class="menu"><a href="{% url 'index' %}">Chat</a> </li>
+    <li class="menu"><a href="{% url 'show_cart' %}">Shop</a></li>
+    <li class="menu" style="float:left"><a href="{% url 'homepage' %}">Home</a></li>
+  </ul>
+
+  <meta charset="utf-8" />
+  <title>Order History</title>
+</head>
+
+<h1>Order History</h1>
+
+<section class="items">
+<p>
+{% for transac in transactions %}
+  <br/>Transaction id: {{transac.id}}<br/>
+  Total price: {{transac.amount}}<br/>
+  Order Placed on: {{transac.timestamp}}<br/>
+  {% for it in transac.items.all %}
+    Item name: {{it.item.name}}<br/>
+    Quantity: {{it.quantity}}<br/>
+    Price: {{it.item.price}}<br/>
+  {% empty %}
+    empty<br/>
+  {% endfor %}
+{% endfor %}
+</p>
+</section>

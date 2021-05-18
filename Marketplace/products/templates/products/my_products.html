@@ -1,0 +1,72 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'products/menubar.css' %}">
+
+<style>
+
+
+ 
+
+  .add, .update, .delete {
+    background-color: color;
+    color: black;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Calibri, Arial, sans-serif;
+    padding: 20px;
+    border: 1px solid lightgrey;
+    border-style: groove;
+    border-radius: 10px;
+  }
+
+  .add:hover, .update:hover, .delete:hover {
+    color: white;
+    background-color: #ded36f;
+  }
+
+  .btns {
+    text-align: center;
+  }
+
+</style>
+
+
+<head>
+  <meta charset="utf-8" />
+  <title>My Products</title>
+
+  <ul class="header"> 
+    <li class="menu"><a href="{% url 'do_logout' %}">Logout</a></li>
+    <li class="menu"><a href="{% url 'myacc' %}">My Account</a></li>
+    <li class="menu" style="background-color: #c9c749;"><a href="{% url 'my_products' %}">My Products</a></li>
+    <li class="menu"><a href="{% url 'index' %}">Chat</a> </li>
+    <li class="menu"><a href="{% url 'show_cart' %}">Shop</a></li>
+    <li class="menu" style="float:left"><a href="{% url 'homepage' %}">Home</a></li>
+  </ul>
+</head>
+
+<body>
+  <h1>My Products</h1>
+
+  {% for p in user_prod %}
+  <p class="body">
+    <img src="{{p.image.url}}" alt="image_product" /><br />
+    Product id: {{p.id}} <br />
+    User: {{p.owner.username}} <br />
+    <strong>{{p.name}}</strong> <br />
+    Price: {{p.price}}<br />
+    Inventory count: {{p.inventory_count}}<br />
+    Description: {{p.description}}
+  </p>
+  {% endfor %}
+</body>
+
+<footer>
+  <div class="btns">
+    <p class="add"><a href="{% url 'add_page' %}">Put Something Up for Sale</a></p> &nbsp;&nbsp;&nbsp;
+    <p class="update"><a href="{% url 'update_product' %}">Update Your Products</a></p> &nbsp;&nbsp;&nbsp;
+    <p class="delete"><a href="{% url 'delete_product' %}">Delete a Product</a></p>
+  </div>
+</footer>

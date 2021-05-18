@@ -1,0 +1,54 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'shop/menubar.css' %}">
+
+<style>
+    .btns {
+    background-color: color;
+    color: black;
+    display: inline;
+    justify-content: right;
+    align-items: right;
+    text-align: center;
+    font-family: Calibri, Arial, sans-serif;
+    padding: 4px;
+    border: 1px solid lightgrey;
+    border-style: groove;
+    border-radius: 6px;
+  }
+
+  .btns:hover {
+    color: white;
+    background-color: #ded36f;
+  }
+
+  .button {
+    text-align: center;
+    justify-content: center;
+  }
+</style>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Error</title>
+
+    <ul class="header"> 
+      <li class="menu"><a href="{% url 'do_logout' %}">Logout</a></li>
+      <li class="menu"><a href="{% url 'myacc' %}">My Account</a></li>
+      <li class="menu"><a href="{% url 'index' %}">Chat</a> </li>
+      <li class="menu" style="background-color: #c9c749;"><a href="{% url 'show_cart' %}">Shop</a></li>
+      <li class="menu" style="float:left"><a href="{% url 'homepage' %}">Home</a></li>
+    </ul>
+  </head>
+
+<h1 style="font-size:100px; color:lightslategray">Oops!</h1>
+<div style="font-size: 20px; text-align: center; color: lightslategray">{{mess}}</div>
+
+
+<footer class="button">
+    <div class="btns">
+      <p class="add"><a href="{% url 'cart' %}">Go Back to Cart</a></p>
+    </div>
+  </footer>
+  
+

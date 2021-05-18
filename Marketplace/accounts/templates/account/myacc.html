@@ -1,0 +1,53 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'accounts/menubar.css' %}">
+
+<style>
+  .order, .prod {
+    color: black;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Calibri, Arial, sans-serif;
+    padding: 40px;
+    border: 1px solid lightgrey;
+    border-style: groove;
+    border-radius: 10px;
+  }
+
+  .order:hover, .prod:hover {
+      color: white;
+      background-color:#ded36f ;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  div{
+    text-align: center;
+  }
+
+
+</style>
+
+<head>
+  <ul class="header"> 
+    <li class="menu"><a href="{% url 'do_logout' %}">Logout</a> </li>
+    <li class="menu" style="background-color: #c9c749 ;">My Account</a></li>
+    <li class="menu"><a href="{% url 'index' %}">Chat</a> </li>
+    <li class="menu"><a href="{% url 'show_cart' %}">Shop</a></li>
+    <li class="menu" style="float:left"><a href="{% url 'homepage' %}">Home</a></li>
+  </ul>
+
+  <meta charset="utf-8" />
+  <title>My Account</title>
+</head>
+
+<h1>My Account Overview</h1>
+
+<div class="options">
+    <p class="order"><a href="{% url 'orderhist' %}">Order History</a></p>
+    <p class="prod"><a href="{% url 'my_products' %}">My Products</a></p>
+</div>

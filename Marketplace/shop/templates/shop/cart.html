@@ -1,0 +1,83 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'shop/menubar.css' %}">
+
+<style>
+  .items {
+    text-align: center;
+    font-family: Calibri, Arial, sans-serif;
+    padding: 5px;
+  }
+
+  .btn1, .btn2, .btn3 {
+    background-color: color;
+    color: black;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Calibri, Arial, sans-serif;
+    padding: 10px;
+    border: 1px solid lightgrey;
+    border-style: groove;
+    border-radius: 10px;
+  }
+
+  .btn1:hover, .btn2:hover, .btn3:hover {
+    color: white;
+    background-color: #ded36f;
+  }
+
+  .btns {
+    text-align: center;
+  }
+
+</style>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Shopping Cart</title>
+
+  <ul class="header"> 
+    <li class="menu"><a href="{% url 'do_logout' %}">Logout</a></li>
+    <li class="menu"><a href="{% url 'myacc' %}">My Account</a></li>
+    <li class="menu"><a href="{% url 'index' %}">Chat</a> </li>
+    <li class="menu" style="background-color: #c9c749;"><a href="{% url 'show_cart' %}">Shop</a></li>
+    <li class="menu" style="float:left"><a href="{% url 'homepage' %}">Home</a></li>
+  </ul>
+</head>
+
+<h1>Your cart</h1>
+
+{% for p in all_order_items %}
+<section class="items">
+  <!-- <img src="{{p.image.url}}" alt="image_product" /><br /> -->
+  User: {{p.item.owner.username}} <br/>
+  Item: <b>{{p.item.name}}</b> <br/>
+  Price: ${{p.item.price}} <br/>
+  Quantity: {{p.quantity}} <br/><br/><br/>
+{% endfor %}
+</section>
+
+
+
+<hr style = "width: 20%;"><br/>
+
+<section class="items">
+<b>TOTAL PRICE: ${{total_price}}</b>
+</section> <br /><br/>
+
+
+<footer>
+  <div class="btns">
+  <div class="btn1">
+    <p class="add"><a href="{% url 'checkout' %}">Checkout</a></p> <br/>
+  </div>
+  <div class="btn2">
+    <p class="add"><a href="{% url 'add_to_cart' %}">Add to Cart</a></p> <br/>
+  </div>
+  <div class="btn3">
+    <p class="add"><a href="{% url 'remove_item' %}">Remove an Item</a></p>
+  </div>
+  </div>
+</footer>
